@@ -4,7 +4,7 @@ const databaseURL =
   "postgres://postgres:password@localhost:5432/postgres";
 const db = new Sequelize(databaseURL);
 
-db.sync()
+db.sync({ force: true })
   .then(console.log("Database synchronized"))
   .catch(err => console.log(err));
 
