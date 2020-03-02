@@ -13,6 +13,17 @@ async function getImages(req, res, next) {
   }
 }
 
+async function postImages(req, res, next) {
+  try {
+    const createImage = await Image.create(req.body);
+
+    res.json(createImage);
+  } catch (error) {
+    next(error);
+  }
+}
+
 router.get("/image", getImages);
+router.post("/image", postImages);
 
 module.exports = router;
