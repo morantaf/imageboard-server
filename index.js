@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const db = require("./db.js");
+const Image = require("./images/model");
 
 const jsonParser = express.json();
 const port = process.env.PORT || 4000;
