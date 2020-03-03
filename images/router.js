@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const Image = require("./model");
+const auth = require("../auth/middleware");
 
 const router = new Router();
 
@@ -23,7 +24,7 @@ async function postImages(req, res, next) {
   }
 }
 
-router.get("/image", getImages);
-router.post("/image", postImages);
+router.get("/images", getImages);
+router.post("/images", auth, postImages);
 
 module.exports = router;
