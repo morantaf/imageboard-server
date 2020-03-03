@@ -21,6 +21,28 @@ async function createUser(request, response, next) {
   }
 }
 
+async function getUsers(request, response, next) {
+  try {
+    const fetchUser = await User.findAll();
+
+    response.json(fetchUser);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function getUniqueUser(request, response, next) {
+  try {
+    const fetchUniqueUser = await User.findByPk(request.params.id);
+
+    response.json(fetchUniqueUser);
+  } catch (error) {
+    next(error);
+  }
+}
+
 router.post("/user", createUser);
+router.get("/users", getUsers);
+router.get("/users/:id", getUniqueUser);
 
 module.exports = router;

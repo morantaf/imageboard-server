@@ -9,7 +9,6 @@ const router = new Router();
 router.post("/login", (request, response, next) => {
   const email = request.body.email;
   const password = request.body.password;
-  console.log("request received on server side", request);
   if (!email || !password) {
     response.status(400).send("Please enter a valid e-mail and password");
   } else {
