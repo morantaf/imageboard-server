@@ -16,8 +16,11 @@ async function getImages(req, res, next) {
 
 async function postImages(req, res, next) {
   try {
-    const createImage = await Image.create(req.body);
-
+    // const auth =
+    // req.headers.authorization && req.headers.authorization.split(" ");
+    // const userId = toData(auth[1]).user;
+    const fullResponse = { ...req.body, userId: req.user.dataValues.id };
+    const createImage = await Image.create(fullResponse);
     res.json(createImage);
   } catch (error) {
     next(error);
