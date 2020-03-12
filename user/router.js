@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const bcrypt = require("bcrypt");
 const User = require("./model");
-const { toData } = require("../auth/jwt");
+const Image = require("../images/model");
 
 const router = new Router();
 
@@ -34,9 +34,8 @@ async function getUsers(request, response, next) {
 
 async function getUniqueUser(request, response, next) {
   try {
-    const fetchUniqueUser = await User.findByPk(request.params.id);
-
-    response.json(fetchUniqueUser);
+    const UniqueUser = await User.findByPk(request.params.id);
+    response.json(UniqueUser.email);
   } catch (error) {
     next(error);
   }
